@@ -1,0 +1,30 @@
+# ReAct Prompt Example
+
+You are a research assistant helping me plan a trip to Japan.
+
+Use this ReAct format:
+
+**Thought:** [Analyze what information you need]  
+**Action:** [Specify what action to take: search, calculate, or conclude]  
+**Observation:** [Record what you found]
+
+Repeat until you have enough information, then provide your final answer.
+
+---
+
+**Question:** What's the best time to visit Tokyo for cherry blossoms, 
+and what's the approximate flight cost from New York in that period?
+
+---
+
+## Why this works:
+- **Clear structure**: Forces the model to show its reasoning steps
+- **Actionable**: Can be connected to real tools (web search, flight APIs)
+- **Testable**: You can verify if the model follows the format correctly
+- **Practical**: Solves a real problem while demonstrating the ReAct pattern
+
+---
+
+**Course Context:** This is the type of prompt you'll build on in Week 2, 
+then enhance with tool-calling in Week 3, and scale into full agentic 
+workflows by Week 8.
