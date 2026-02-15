@@ -1,0 +1,44 @@
+# Sentinel - AI Security Incident Analyzer
+
+**Week 1 Project - GRAD 5900: Applied Generative AI**
+
+## Overview
+Sentinel uses ReAct (Reasoning + Acting) pattern to analyze security incidents and provide actionable recommendations.
+
+## Features
+- ✅ ReAct reasoning pattern implementation
+- ✅ Multiple security incident scenarios
+- ✅ Simulated investigation workflow
+- ✅ Actionable security recommendations
+
+## Setup
+
+1. Clone repository
+2. Create virtual environment:
+```bash
+   python3.12 -m venv venv
+   source venv/bin/activate
+```
+3. Install dependencies:
+```bash
+   pip3 install -r requirements.txt
+```
+4. Create `.env` file with your Anthropic API key:
+```bash
+   echo "ANTHROPIC_API_KEY=your_key_here" > .env
+```
+5. Run:
+```bash
+   python3 sentinel_v1.py
+```
+
+## Test Cases
+- **SSH Brute Force**: Tor exit node attacking production server
+- **Disk Full**: Critical storage space on database server
+- **Cryptominer**: Suspicious process consuming resources
+
+## Next Steps (Week 2+)
+- Add Chain-of-Thought enhancements
+- Implement LangGraph state machine
+- Add vector database for incident memory
+- Build MCP servers for real system integration
