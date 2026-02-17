@@ -23,13 +23,12 @@
 7. [Data Model](#data-model)
 8. [Implementation Details](#implementation-details)
 9. [Test Cases](#test-cases)
-10. [Cost Analysis](#cost-analysis)
-11. [Installation Guide](#installation-guide)
-12. [Usage Examples](#usage-examples)
-13. [Project Structure](#project-structure)
-14. [Success Metrics](#success-metrics)
-15. [Limitations & Future Work](#limitations-future-work)
-16. [Appendices](#appendices)
+10. [Installation Guide](#installation-guide)
+11. [Usage Examples](#usage-examples)
+12. [Project Structure](#project-structure)
+13. [Success Metrics](#success-metrics)
+14. [Limitations & Future Work](#limitations-future-work)
+15. [Appendices](#appendices)
 
 ---
 
@@ -43,7 +42,6 @@
 |--------|-------|
 | Setup Time | 10 minutes |
 | Response Time | < 5 seconds per incident |
-| Cost per Analysis | ~$0.0007 |
 | Technology Stack | Python 3.11+, Claude 3 Haiku |
 | Status | ✅ Production Ready |
 
@@ -136,7 +134,7 @@ Demonstrate ReAct reasoning pattern with simulated security investigations as a 
 
 ✅ **Advantages:**
 - Fast inference (< 3 seconds)
-- Cost-effective ($0.25 per million input tokens)
+- Cost-effective pricing
 - Strong reasoning capabilities
 - Excellent instruction following
 
@@ -233,9 +231,7 @@ def analyze_incident(incident):
 | Metric | Target | Actual | Status |
 |--------|--------|--------|--------|
 | Response Time | < 5 seconds | ~3 seconds | ✅ Met |
-| Throughput | 100+ / $5 | ~7,000 / $5 | ✅ Exceeded |
 | Availability | Local (100%) | 100% | ✅ Met |
-| Cost per Run | $0.0007 | $0.0007 | ✅ Met |
 
 ### NFR2: Security
 
@@ -440,11 +436,6 @@ anthropic>=0.79.0
 python-dotenv>=1.2.0
 ```
 
-**Installation:**
-```bash
-pip install -r requirements.txt
-```
-
 **Dependency Analysis:**
 
 | Package | Version | Size | Purpose | Alternatives |
@@ -473,22 +464,6 @@ Multiple failed SSH login attempts detected:
 - ✅ Recommends IP blocking
 - ✅ Suggests fail2ban implementation
 - ✅ Mentions SSH key authentication
-
-**Validation:**
-```python
-def test_ssh_brute_force():
-    result = analyze_incident(test_incidents["ssh_brute_force"])
-    
-    assertions = [
-        "high" in result.lower() or "critical" in result.lower(),
-        "brute" in result.lower() or "attack" in result.lower(),
-        "block" in result.lower(),
-        "fail2ban" in result.lower() or "automated" in result.lower(),
-        "key" in result.lower() or "ssh" in result.lower()
-    ]
-    
-    return all(assertions)
-```
 
 ### TC2: Disk Space Critical
 
@@ -533,35 +508,6 @@ Unusual process detected:
 | SSH Brute Force | ✅ PASS | 2.8s | HIGH | 3/3 matched |
 | Disk Full | ✅ PASS | 3.1s | MEDIUM | 3/3 matched |
 | Cryptominer | ✅ PASS | 3.3s | CRITICAL | 4/4 matched |
-
----
-
-## Cost Analysis
-
-### Token Usage
-
-| Component | Avg Tokens | Cost per 1M | Cost per Run |
-|-----------|-----------|-------------|--------------|
-| Input (Prompt) | 200 | $0.25 | $0.00005 |
-| Output (Analysis) | 500 | $1.25 | $0.000625 |
-| **Total per Incident** | **700** | **N/A** | **$0.000675** |
-
-### Budget Projection
-
-**With $5 Credit:**
-```
-Maximum incidents = $5.00 / $0.0007 = ~7,142 analyses
-```
-
-| Scenario | Estimated Runs | Cost | Remaining Budget |
-|----------|----------------|------|------------------|
-| Initial Testing | 50 | $0.04 | $4.96 |
-| Development Phase | 200 | $0.14 | $4.82 |
-| Integration Testing | 300 | $0.21 | $4.61 |
-| Production Use | 500 | $0.35 | $4.26 |
-| **Semester Total** | **1,050** | **$0.74** | **$4.26** |
-
-**Conclusion:** $5 credit is more than sufficient for extensive development and testing.
 
 ---
 
@@ -622,7 +568,7 @@ ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
 **Get API Key:**
 
 1. Go to https://console.anthropic.com/
-2. Sign up (free $5 credits)
+2. Sign up (free credits available)
 3. Navigate to "API Keys"
 4. Create new key
 5. Paste into `.env`
@@ -704,29 +650,29 @@ print(result)
 ```
 App_Ag_AI_1/
 │
-├── sentinel_v1.py          # Main application (150 lines)
+├── sentinel_v1.py          # Main application
 ├── .env                    # API keys (NEVER commit)
 ├── .env.example            # Template for setup
 ├── .gitignore              # Excludes venv/, .env
-├── requirements.txt        # Python dependencies (2 packages)
+├── requirements.txt        # Python dependencies
 ├── README.md               # User documentation
-├── run.sh                  # Convenience script (optional)
+├── run.sh                  # Convenience script
 ├── SPEC.md                 # This document
 └── venv/                   # Virtual environment (NEVER commit)
 ```
 
 ### File Descriptions
 
-| File | Purpose | Commit to Git? | Lines |
-|------|---------|----------------|-------|
-| sentinel_v1.py | Core application logic | ✅ Yes | 150 |
-| .env | API keys (local only) | ❌ No | 1 |
-| .env.example | Setup template | ✅ Yes | 1 |
-| .gitignore | Git exclusion rules | ✅ Yes | 5 |
-| requirements.txt | Dependency list | ✅ Yes | 2 |
-| README.md | User documentation | ✅ Yes | 80 |
-| run.sh | Quick run script | ✅ Yes | 15 |
-| SPEC.md | Product specification | ✅ Yes | 1000+ |
+| File | Purpose | Commit to Git? |
+|------|---------|----------------|
+| sentinel_v1.py | Core application logic | ✅ Yes |
+| .env | API keys (local only) | ❌ No |
+| .env.example | Setup template | ✅ Yes |
+| .gitignore | Git exclusion rules | ✅ Yes |
+| requirements.txt | Dependency list | ✅ Yes |
+| README.md | User documentation | ✅ Yes |
+| run.sh | Quick run script | ✅ Yes |
+| SPEC.md | Product specification | ✅ Yes |
 
 ---
 
@@ -756,7 +702,7 @@ App_Ag_AI_1/
 - [x] `.gitignore` protecting sensitive data
 - [x] `requirements.txt` for dependencies
 - [x] Test cases demonstrating functionality
-- [x] Product specification document (this file)
+- [x] Product specification document
 
 ---
 
@@ -833,50 +779,39 @@ brute-force attack attempt.
 
 Action: I will investigate the following:
 1. Verify the source IP and confirm it is a known Tor exit node
-2. Check the target server's security configuration, including SSH 
-   settings and access control measures
-3. Analyze the pattern and volume of the login attempts to determine 
-   the scale and potential impact
-4. Review the server's logs for any other suspicious activities or 
-   indicators of compromise
+2. Check the target server's security configuration
+3. Analyze the pattern and volume of the login attempts
+4. Review the server's logs for any other suspicious activities
 5. Assess the potential impact on the production web server
 
 Observation:
-1. The source IP 185.220.101.x is confirmed to be a Tor exit node, 
-   commonly used to obfuscate the attacker's true identity
-2. The target server allows SSH access from the internet with a weak 
-   password policy allowing common usernames
-3. The login attempts (347 in 10 minutes) indicate an automated 
-   brute-force attack using a tool or script
-4. Server logs show no other suspicious activities, but the high volume 
-   could potentially overload the system
-5. If successful, the attacker could gain unauthorized access, leading 
-   to data breaches, system compromise, or malicious activities
+1. The source IP is confirmed to be a Tor exit node
+2. The target server allows SSH access from the internet with weak 
+   password policy
+3. The login attempts (347 in 10 minutes) indicate automated attack
+4. Server logs show no other suspicious activities
+5. If successful, could lead to unauthorized access and compromise
 
 Recommendation:
-Based on the analysis, I recommend the following immediate and 
-long-term actions:
+Based on the analysis, I recommend the following:
 
 IMMEDIATE (< 1 hour):
-1. Block source IP 185.220.101.x at firewall level
+1. Block source IP at firewall level
 2. Monitor for similar attacks from other Tor exit nodes
-3. Verify no successful logins occurred during the attack window
+3. Verify no successful logins occurred during the attack
 
 SHORT-TERM (< 1 week):
-1. Implement fail2ban or similar automated blocking solution
+1. Implement fail2ban or similar automated blocking
 2. Review and strengthen SSH access controls
-3. Deploy intrusion detection and prevention systems (IDPS)
+3. Deploy intrusion detection and prevention systems
 4. Notify security team and document incident
 
 LONG-TERM (Strategic):
-1. Disable password-based SSH authentication entirely
-2. Require SSH key-based authentication for all remote access
-3. Implement VPN or bastion host for production server access
+1. Disable password-based SSH authentication
+2. Require SSH key-based authentication
+3. Implement VPN or bastion host for production access
 4. Regular security audits of access controls
-5. Update incident response procedures based on this event
-
-By taking these actions, the organization can mitigate the immediate 
-threat and strengthen overall security posture against future attacks.
+5. Update incident response procedures
 
 ============================================================
 ```
@@ -961,7 +896,7 @@ git push -u origin main
 git status
 
 # Stage changes
-git add sentinel_v1.py README.md
+git add sentinel_v1.py README.md SPEC.md
 
 # Commit
 git commit -m "Add ReAct reasoning for incident analysis"
@@ -1014,7 +949,7 @@ git check-ignore .env
 | Author | Bharani |
 | Course | GRAD 5900 - Spring 2026 |
 | Project Status | ✅ Complete |
-| Word Count | ~5,500 words |
+| Word Count | ~4,500 words |
 | Format | Markdown |
 
 ---
